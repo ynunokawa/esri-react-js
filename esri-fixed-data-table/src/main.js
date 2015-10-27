@@ -1,15 +1,15 @@
 require([
-	"esri/arcgis/utils",
-	"dojo/_base/array",
+	'esri/arcgis/utils',
+	'dojo/_base/array',
 
-	"react", 
-	"reactDom",
-	"fixedDataTable"
+	'react',
+	'reactDom',
+	'fixedDataTable'
 ], function(
-	arcgisUtils, 
+	arcgisUtils,
 	arrayUtils,
 
-	React, 
+	React,
 	ReactDOM,
 	FixedDataTable
 ) {
@@ -18,26 +18,27 @@ require([
 	var map;
 	var layer;
 
-	var featureId = "LOCATIONID";
+	var featureId = 'LOCATIONID';
 	var attributesForTable = [{
-		name: "LOCATIONID",
-		label: "Name"
+		name: 'LOCATIONID',
+		label: 'Name'
 	}, {
-		name: "NUMSPACES",
-		label: "Capacity"
+		name: 'NUMSPACES',
+		label: 'Capacity'
 	}];
-	var mapId = "1c0bf2bf70244f888361280f4aabde94";
+	var mapId = '1c0bf2bf70244f888361280f4aabde94';
+	var layerId = 'Bike_Parking_4640';
 
 	var rows = [];
   	var Table = FixedDataTable.Table;
 	var Column = FixedDataTable.Column;
 
 	// Esri Map
-	var mapDeferred = arcgisUtils.createMap(mapId, "mapDiv");
+	var mapDeferred = arcgisUtils.createMap(mapId, 'mapDiv');
 	mapDeferred.then(function(response) {
 		map = response.map;
 		console.log(map);
-		layer = map.getLayer("Bike_Parking_4640");
+		layer = map.getLayer(layerId);
 		console.log(layer);
 
 		setTimeout(function() {
@@ -57,13 +58,13 @@ require([
 
 	function getAllFeatureAttributes(layer, extent) {
 		var setRows = [];
-		console.log("getAllFeatureAttributes");
+		console.log('getAllFeatureAttributes');
 		arrayUtils.forEach(layer.graphics, function(g) {
 			if(extent.contains(g.geometry)) {
 				setRows.push([g.attributes[attributesForTable[0].name], g.attributes[attributesForTable[1].name]]);
 			}
 		});
-		console.log("updatedRowsCount: ", setRows.length);
+		console.log('updatedRowsCount: ', setRows.length);
 		return setRows;
 	}
 
@@ -92,14 +93,14 @@ require([
 				console.log(e, index);
 				console.log(this.state.rows[index][0]);
 				getTargetFeature(this.state.rows[index][0]);
-			},  
+			},
 
 			componentDidMount: function() {
 				this.props.map.on('extent-change', function(e) {
 					this.setState({ rows: getAllFeatureAttributes(layer, e.extent) });
 				}.bind(this));
 		  	},
-		  
+
 			render() {
 				return (
 			      <Table
