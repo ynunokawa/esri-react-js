@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Test - Esri Fixed Data Table</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fixed-data-table/0.4.7/fixed-data-table.css">
+    <link rel="stylesheet" href="//js.arcgis.com/3.14/esri/css/esri.css">
+    <style>
+      html, body, #mapDiv {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #FFF;
+        overflow: hidden;
+        font-family: "Meiryo";
+      }
+      #example {
+      	position: absolute;
+      	top: 15px;
+      	right: 15px;
+      	z-index: 2;
+      }
+      #example2 {
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+      }
+      .well {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="mapDiv"></div>
+    <div id="example"></div>
+    <div id="example2"></div>
+    <script src="src/run.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="//js.arcgis.com/3.14/"></script>
+    <script type="text/babel" src="src/main.js"></script>
+  </body>
+</html>
