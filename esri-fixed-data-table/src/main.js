@@ -56,9 +56,9 @@ require([
 
   	//** EsriJS + FixedDataTable (JSX) **//
 
-	function getAllFeatureAttributes(layer, extent) {
+	function getFeatureAttributes(layer, extent) {
 		var setRows = [];
-		console.log('getAllFeatureAttributes');
+		console.log('getFeatureAttributes');
 		arrayUtils.forEach(layer.graphics, function(g) {
 			if(extent.contains(g.geometry)) {
 				setRows.push([g.attributes[attributesForTable[0].name], g.attributes[attributesForTable[1].name]]);
@@ -81,7 +81,7 @@ require([
 		var EsriFixedDataTable = React.createClass({
 			getInitialState() {
 				return {
-					rows : getAllFeatureAttributes(layer, map.extent)
+					rows : getFeatureAttributes(layer, map.extent)
 				};
 			},
 
@@ -97,7 +97,7 @@ require([
 
 			componentDidMount: function() {
 				this.props.map.on('extent-change', function(e) {
-					this.setState({ rows: getAllFeatureAttributes(layer, e.extent) });
+					this.setState({ rows: getFeatureAttributes(layer, e.extent) });
 				}.bind(this));
 		  	},
 
