@@ -214,6 +214,9 @@ require([
 		  	},
 		  
 			render() {
+			    var controlledScrolling =
+			      this.props.left !== undefined || this.props.top !== undefined;
+
 				return (
 			      <Table
 				    rowHeight={30}
@@ -222,11 +225,13 @@ require([
 				    width={5000}
 				    height={300}
 				    headerHeight={50}
-			        scrollTop={this.props.top}
-			        scrollLeft={this.props.left}
 				    onRowClick={this._onRowSelect}
 				    onRowMouseEnter={this._onRowMouseEnter}
-				    onRowMouseLeave={this._onRowMouseLeave}>
+				    onRowMouseLeave={this._onRowMouseLeave}
+			        scrollTop={this.props.top}
+			        scrollLeft={this.props.left}
+			        overflowX={controlledScrolling ? "hidden" : "auto"}
+			        overflowY={controlledScrolling ? "hidden" : "auto"}>
 				    {(() => {
 				    	var i = -1;
 				    	return _attributesForTable.map((a) => {
@@ -239,6 +244,15 @@ require([
 							      dataKey={i}
 							      key={i}
 							      flexGrow={1}
+							    />;
+				    		}
+				    		else if(i === 0) {
+				    			return <Column
+							      label={a.label}
+							      width={200}
+							      dataKey={i}
+							      key={i}
+							      fixed={true}
 							    />;
 				    		}
 				    		else {
