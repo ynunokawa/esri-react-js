@@ -214,8 +214,6 @@ require([
 		  	},
 		  
 			render() {
-			    var controlledScrolling =
-			      this.props.left !== undefined || this.props.top !== undefined;
 
 				return (
 			      <Table
@@ -227,11 +225,7 @@ require([
 				    headerHeight={50}
 				    onRowClick={this._onRowSelect}
 				    onRowMouseEnter={this._onRowMouseEnter}
-				    onRowMouseLeave={this._onRowMouseLeave}
-			        scrollTop={this.props.top}
-			        scrollLeft={this.props.left}
-			        overflowX={controlledScrolling ? "hidden" : "auto"}
-			        overflowY={controlledScrolling ? "hidden" : "auto"}>
+				    onRowMouseLeave={this._onRowMouseLeave}>
 				    {(() => {
 				    	var i = -1;
 				    	return _attributesForTable.map((a) => {
@@ -240,7 +234,7 @@ require([
 				    		if(i === _attributesForTable.length-1) {
 				    			return <Column
 							      label={a.label}
-							      width={200}
+							      width={150}
 							      dataKey={i}
 							      key={i}
 							      flexGrow={1}
@@ -249,7 +243,7 @@ require([
 				    		else {
 				    			return <Column
 							      label={a.label}
-							      width={200}
+							      width={150}
 							      dataKey={i}
 							      key={i}
 							    />;
@@ -262,7 +256,7 @@ require([
 		});
 
 		ReactDOM.render(
-			<EsriFixedDataTable map={map} top={0} left={0} />,
+			<EsriFixedDataTable map={map} />,
 			document.getElementById(_tableDivID)
 		);
 
