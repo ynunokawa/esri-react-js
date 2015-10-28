@@ -1,0 +1,12 @@
+.public_fixedDataTable_main {
+  background-color: white;
+}
+.fixedDataTableRowLayout_rowWrapper {
+  cursor: pointer;
+}
+.fixedDataTableCellGroupLayout_cellGroup:hover > .public_fixedDataTableCell_main {
+  background-color: #ffb79d;
+}
+.fixedDataTableRowLayout_main:hover {
+  background-color: #ffb79d;
+}
