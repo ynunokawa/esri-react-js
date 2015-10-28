@@ -222,6 +222,8 @@ require([
 				    width={5000}
 				    height={300}
 				    headerHeight={50}
+			        scrollTop={this.props.top}
+			        scrollLeft={this.props.left}
 				    onRowClick={this._onRowSelect}
 				    onRowMouseEnter={this._onRowMouseEnter}
 				    onRowMouseLeave={this._onRowMouseLeave}>
