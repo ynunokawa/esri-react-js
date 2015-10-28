@@ -246,15 +246,6 @@ require([
 							      flexGrow={1}
 							    />;
 				    		}
-				    		else if(i === 0) {
-				    			return <Column
-							      label={a.label}
-							      width={200}
-							      dataKey={i}
-							      key={i}
-							      fixed={true}
-							    />;
-				    		}
 				    		else {
 				    			return <Column
 							      label={a.label}
@@ -271,7 +262,7 @@ require([
 		});
 
 		ReactDOM.render(
-			<EsriFixedDataTable map={map} />,
+			<EsriFixedDataTable map={map} top={0} left={0} />,
 			document.getElementById(_tableDivID)
 		);
 
