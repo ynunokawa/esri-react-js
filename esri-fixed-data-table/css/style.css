@@ -10,3 +10,18 @@
 .fixedDataTableRowLayout_main:hover {
   background-color: #ffb79d;
 }
+
+.EFDT-layer-select {
+	margin: 10px;
+}
+.EFDT-select {
+	font-family: "Meiryo";
+	padding: 7px;
+	border-radius: 3px;
+}
+.EFDT-option {
+	font-family: "Meiryo";
+}
+.EFDT-table {
+
+}
